@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Tech Crunch</string>
+    <string name="retry">Retry</string>
+    <string name="error_message">Something went wrong</string>
+    <string name="name">Name: %1$s</string>
+    <string name="description"><b>Description: %1$s</b> </string>
+    <string name="no_description_message">Description: There is no description</string>
+
+
+</resources>
