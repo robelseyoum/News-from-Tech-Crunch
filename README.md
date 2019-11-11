@@ -1,4 +1,4 @@
-# Android veb crawling from News Tech Crunch web 
+# Android web crawling from News Tech Crunch web 
 
 - Android Libraries used: -
 Retrofit,
