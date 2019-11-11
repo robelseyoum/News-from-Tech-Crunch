@@ -35,11 +35,11 @@ class CrunchViewModel (val getDataRepository: GetDataRepository): ViewModel() {
         )
     }
 
-    fun retunAllNewsResult() = allNewsMutableData
+    fun returnAllNewsResult() = allNewsMutableData
 
-    fun retunError() = errorMutuableData
+    fun returnError() = errorMutuableData
 
-    fun returnProgerssBarValue() = progressbarMutableData
+    fun returnProgressBarValue() = progressbarMutableData
 
     override fun onCleared() {
         super.onCleared()

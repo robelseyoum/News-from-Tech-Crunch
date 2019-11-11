@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.robelseyoum3.techcrunch.R
@@ -32,16 +31,24 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, crunchViewModelFactory).get(CrunchViewModel::class.java)
         viewModel.getAllNewsData()
 
-        viewModel.retunAllNewsResult().observe(this, object : Observer<List<TechCrunchPosts>>{
+        viewModel.returnAllNewsResult().observe(this, object : Observer<List<TechCrunchPosts>>{
             override fun onChanged(t: List<TechCrunchPosts>) {
                 allDataAdapter(t)
             }
         })
 
-        viewModel.retunError().observe(this, Observer {
+        viewModel.returnError().observe(this, Observer {
+            if(it == true){
+                error_message_container.visibility = View.VISIBLE
+            } else {
+                error_message_container.visibility = View.GONE
+            }
+        })
+
+        viewModel.returnProgressBarValue().observe(this, Observer {
             if(it == true){
                 progress_id_main.visibility = View.VISIBLE
-            } else {
+            }else{
                 progress_id_main.visibility = View.GONE
             }
         })
