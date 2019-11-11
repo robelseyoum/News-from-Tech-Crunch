@@ -31,11 +31,8 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, crunchViewModelFactory).get(CrunchViewModel::class.java)
         viewModel.getAllNewsData()
 
-        viewModel.returnAllNewsResult().observe(this, object : Observer<List<TechCrunchPosts>>{
-            override fun onChanged(t: List<TechCrunchPosts>) {
-                allDataAdapter(t)
-            }
-        })
+        viewModel.returnAllNewsResult().observe(this,
+            Observer<List<TechCrunchPosts>> { t -> allDataAdapter(t) })
 
         viewModel.returnError().observe(this, Observer {
             if(it == true){

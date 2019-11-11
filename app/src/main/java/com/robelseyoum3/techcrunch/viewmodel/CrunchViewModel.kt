@@ -6,13 +6,13 @@ import com.robelseyoum3.techcrunch.model.TechCrunchPosts
 import com.robelseyoum3.techcrunch.repository.GetDataRepository
 import io.reactivex.disposables.CompositeDisposable
 
-class CrunchViewModel (val getDataRepository: GetDataRepository): ViewModel() {
+class CrunchViewModel (private val getDataRepository: GetDataRepository): ViewModel() {
 
     private var allNewsMutableData: MutableLiveData<List<TechCrunchPosts>> = MutableLiveData()
 
     private var progressbarMutableData:  MutableLiveData<Boolean> = MutableLiveData()
 
-    private val errorMutuableData: MutableLiveData<Boolean> = MutableLiveData()
+    private val errorMutableData: MutableLiveData<Boolean> = MutableLiveData()
 
     private var compositeDisposable = CompositeDisposable() //we can add several observable
 
@@ -29,7 +29,7 @@ class CrunchViewModel (val getDataRepository: GetDataRepository): ViewModel() {
                         progressbarMutableData.value = false
                     },
                     {
-                        errorMutuableData.value = false
+                        errorMutableData.value = false
                     }
                 )
         )
@@ -37,7 +37,7 @@ class CrunchViewModel (val getDataRepository: GetDataRepository): ViewModel() {
 
     fun returnAllNewsResult() = allNewsMutableData
 
-    fun returnError() = errorMutuableData
+    fun returnError() = errorMutableData
 
     fun returnProgressBarValue() = progressbarMutableData
 
