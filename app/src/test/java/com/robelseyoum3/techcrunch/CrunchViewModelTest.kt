@@ -14,9 +14,11 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
+import org.mockito.ArgumentMatchers
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnitRunner
+import java.lang.RuntimeException
 
 
 @RunWith(MockitoJUnitRunner::class)
@@ -70,6 +72,23 @@ class CrunchViewModelTest {
         verify(allNewsMutableData, times(1)).onChanged(news)
         verify(progressbarMutableData, times(1)).onChanged(true)
         verify(errorMutableData, times(0)).onChanged(false)
+    }
+
+    @Test
+    fun getNews_ReturnError(){
+
+        val error = "Error Message"
+
+        `when`(getDataRepositoryImpl.getCrunchRepositoriesMethod()).thenReturn(Single.error(RuntimeException(error)))
+
+        crunchViewModel.getAllNewsData()
+
+        verify(allNewsMutableData, times(1)).onChanged(ArgumentMatchers.anyList())
+
+        verify(progressbarMutableData, times(1)).onChanged(true)
+        verify(progressbarMutableData, times(1)).onChanged(false)
+        verify(errorMutableData, times(0)).onChanged(true)
+
     }
 
 
