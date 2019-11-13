@@ -7,7 +7,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class GetDataRepository @Inject constructor(private val webServices: WebServices) : Repository {
+class GetDataRepositoryImpl @Inject constructor(private val webServices: WebServices) : Repository {
 
     override fun getCrunchRepositoriesMethod(): Single<List<TechCrunchPosts>> {
         return webServices

@@ -17,5 +17,4 @@ data class TechCrunchPosts(
     @SerializedName("title")
     val title: Title
 
-
 )
